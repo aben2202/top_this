@@ -5,7 +5,6 @@ module Api
 
 			# GET /routes
 			def index
-				debugger
 				if params[:gym_id] 
 					respond_with Route.where gym_id: params[:gym_id]
 				else

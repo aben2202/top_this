@@ -5,7 +5,11 @@ module Api
 
 			# GET /routes
 			def index
-				respond_with Route.all
+				if params[:gym_id] 
+					respond_with Route.where gym_id=params[:gym_id]
+				else
+					respond_with Route.all
+				end
 			end
 
 			# POST /routes

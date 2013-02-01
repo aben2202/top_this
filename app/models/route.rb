@@ -3,4 +3,6 @@ class Route < ActiveRecord::Base
 
   validates_presence_of :name, :rating, :set_date
 
+  has_many :route_completions
+
 end

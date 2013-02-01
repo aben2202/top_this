@@ -1,0 +1,2 @@
+module RouteCompletionsHelper
+end

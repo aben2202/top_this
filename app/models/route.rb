@@ -7,7 +7,7 @@ class Route < ActiveRecord::Base
 
   def as_json(options={})
   	super(only: [:id, :gym_id, :name, :rating, :set_date, :retirement_date],
-  		  include: [:route_completions])
+  		  include: [:route_completions => {only: [:id, :climb_type, :completions_date, :completion_type]}])
   end
 
 end

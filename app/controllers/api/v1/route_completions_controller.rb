@@ -5,7 +5,6 @@ module Api
 
 			# GET /route_completions
 			def index
-				debugger
 				if params[:route]
 					@route_completions = RouteCompletion.where route: params[:route]
 				else

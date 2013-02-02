@@ -5,8 +5,9 @@ class RouteCompletion < ActiveRecord::Base
   belongs_to :user
 
   def as_json(options={})
-  	super(only: [:id, :climb_type, :completions_date, :completion_type],
-  		  include: [:route, :user])
+  	super(only: [:id, :climb_type, :completion_date, :completion_type],
+  		  include: {:route => {only: [:id, :gym_id, :name, :rating, :set_date, :retirement_date]},
+  		  		    :user => {only: [:id, :email, :first_name, :last_name]}})
   end
 
 end

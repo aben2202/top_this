@@ -5,8 +5,8 @@ module Api
 
 			# GET /route_completions
 			def index
-				if params[:route]
-					@route_completions = RouteCompletion.where route: params[:route]
+				if params[:route_id]
+					@route_completions = RouteCompletion.where route_id: params[:route_id]
 				else
 					@route_completions = RouteCompletion.all
 				end

@@ -6,7 +6,7 @@ class Gym < ActiveRecord::Base
   									less_than_or_equal_to: 99999
 
   def as_json(options={})
-  	super(only: [:id, :name, :street_address])
+  	super(only: [:id, :name, :street_address, :city, :state, :zip])
   end
 
 end

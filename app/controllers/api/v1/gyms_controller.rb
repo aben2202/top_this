@@ -5,7 +5,8 @@ module Api
 
 			# GET /gyms
 			def index
-				respond_with Gym.all
+				@gyms = Gym.all
+				render json: @gyms
 			end
 
 			# POST /gyms

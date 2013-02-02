@@ -5,11 +5,13 @@ module Api
 
 			# GET /route_completions
 			def index
+				debugger
 				if params[:route]
-					respond_with RouteCompletion.where route: params[:route]
+					@route_completions = RouteCompletion.where route: params[:route]
 				else
-					respond_with RouteCompletion.all
+					@route_completions = RouteCompletion.all
 				end
+				render json: @route_completions
 			end
 
 			# POST /route_completions

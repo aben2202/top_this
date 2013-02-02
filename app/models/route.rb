@@ -5,4 +5,9 @@ class Route < ActiveRecord::Base
 
   has_many :route_completions
 
+  def as_json(options={})
+  	super(only: [:id, :name, :rating, :set_date, :gym_id],
+  		  include: [:route_completions])
+  end
+
 end

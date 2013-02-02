@@ -6,10 +6,11 @@ module Api
 			# GET /routes
 			def index
 				if params[:gym_id] 
-					respond_with Route.where gym_id: params[:gym_id]
+					@routes = Route.where gym_id: params[:gym_id]
 				else
-					respond_with Route.all
+					@routes = Route.all
 				end
+				render json: @routes
 			end
 
 			# POST /routes

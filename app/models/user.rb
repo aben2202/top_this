@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name
   # attr_accessible :title, :body
 
-  has_many :finished_routes, class_name: "Route"
+  has_many :route_completions
 
   def as_json(options={})
   	super(only: [:id, :email, :first_name, :last_name])

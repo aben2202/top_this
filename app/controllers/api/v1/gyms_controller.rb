@@ -11,7 +11,13 @@ module Api
 
 			# POST /gyms
 			def create
-				respond_with Gym.create(params[:route])
+				@newGym = Gym.create(name: params[:name], 
+									 street_address: params[:street_address],
+									 city: params[:city],
+									 state: params[:state],
+									 zip: params[:zip])
+
+				render json: @newGym
 			end
 
 			# GET /gyms/1

@@ -15,7 +15,11 @@ module Api
 
 			# POST /route_completions
 			def create
-				respond_with RouteCompletion.create(params[:route_completion])
+				@new_completion = RouteCompletion.create(params[:route_completion])
+				@new_completion.completion_date = Date.today.to_s
+				@new_completion.save
+
+				render json: @new_completion
 			end
 
 			# GET /route_completions/1

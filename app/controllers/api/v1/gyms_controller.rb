@@ -1,6 +1,7 @@
 module Api
 	module V1
 		class GymsController < ActionController::Base
+			before_filter :authenticate_user!, except: [:index, :show]
 			respond_to :json
 
 			# GET /gyms

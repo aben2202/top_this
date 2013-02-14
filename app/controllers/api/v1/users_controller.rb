@@ -1,6 +1,7 @@
 module Api
 	module V1
 		class UsersController < ActionController::Base
+			before_filter :authenticate_user!, except: [:index, :show]
 			respond_to :json
 
 			# GET /users
@@ -11,7 +12,9 @@ module Api
 
 			# POST /users
 			def create
-				respond_with User.create(params[:user])
+				debugger
+				@new_user = User.create(params[:user])
+				render json: @new_user
 			end
 
 			# GET /users/1

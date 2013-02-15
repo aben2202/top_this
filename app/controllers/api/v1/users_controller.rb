@@ -6,7 +6,11 @@ module Api
 
 			# GET /users
 			def index
-				@users = User.all
+				if params[:auth_token] 
+					@users = User.find_by_authentication_token(params[:auth_token])
+				else
+					@users = User.all
+				end
 				render json: @users
 			end
 

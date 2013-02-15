@@ -8,7 +8,10 @@ module Api
 				if params[:route_id]
 					@route_completions = RouteCompletion.where route_id: params[:route_id]
 				elsif params[:user_id]
-					@route_completions = RouteCompletion.where user_id: params[:user_id]
+					#@route_completions = RouteCompletion.where user_id: params[:user_id]
+					conditions = ["route_completions.user_id=(?)", params[:user_id]]
+					order = ["route_completions.completion_date DESC"]
+					@route_completions = RouteCompletion.all ( conditions: conditions, order: order )
 				else
 					@route_completions = RouteCompletion.all
 				end

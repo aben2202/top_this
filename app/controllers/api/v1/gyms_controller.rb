@@ -1,6 +1,7 @@
 module Api
 	module V1
 		class GymsController < ActionController::Base
+			prepend_before_filter :get_auth_token, :skip_trackable
 			before_filter :authenticate_user!, except: [:index, :show]
 			respond_to :json
 
@@ -12,11 +13,12 @@ module Api
 
 			# POST /gyms
 			def create
-				@newGym = Gym.create(name: params[:name], 
-									 street_address: params[:street_address],
-									 city: params[:city],
-									 state: params[:state],
-									 zip: params[:zip])
+				debugger
+				@newGym = Gym.create(name: params[:gym][:name], 
+									 street_address: params[:gym][:street_address],
+									 city: params[:gym][:city],
+									 state: params[:gym][:state],
+									 zip: params[:gym][:zip])
 
 				render json: @newGym
 			end
@@ -35,6 +37,15 @@ module Api
 			def destroy
 				respond_with Gym.destroy(params[:id])
 			end
+
+			protected
+			def get_auth_token
+	  			params[:auth_token] = request.headers["Auth_token"]
+		  	end
+
+		  	def skip_trackable
+		      request.env['devise.skip_trackable'] = true
+		    end
 		end
 	end
 end

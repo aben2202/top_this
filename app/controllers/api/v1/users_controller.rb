@@ -2,6 +2,7 @@ module Api
 	module V1
 		class UsersController < ActionController::Base
 			before_filter :authenticate_user!, except: [:index, :show]
+			#has_attached_file :profile_pic
 			respond_to :json
 
 			# GET /users
@@ -16,7 +17,6 @@ module Api
 
 			# POST /users
 			def create
-				debugger
 				@new_user = User.create(params[:user])
 				render json: @new_user
 			end
@@ -28,7 +28,11 @@ module Api
 
 			# PUT /users/1
 			def update
-				respond_with User.update(params[:id], params[:user])
+				if params[:id] and params[:user]
+					User.update(params[:id], params[:user])
+				else
+					respond_with User.update(params[:id], params[:user])
+				end
 			end
 
 			# DELETE /users/1

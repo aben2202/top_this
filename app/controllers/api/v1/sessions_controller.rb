@@ -2,6 +2,7 @@ module Api
 	module V1
 		class SessionsController < ActionController::Base
 		  prepend_before_filter :get_auth_token
+		  prepend_before_filter :skip_trackable
 		  before_filter :authenticate_user!, only: [:destroy]
 		  before_filter :ensure_params_exist, only: [:create]
 		 
@@ -19,9 +20,7 @@ module Api
 		  end
 		  
 		  def destroy
-		  	debugger
 		  	@user = User.find_by_authentication_token(params[:auth_token])
-		  	sign_out(@user)
 		  	@user.authentication_token = nil
 		  	@user.save
 		  	render json: @user
@@ -39,9 +38,13 @@ module Api
 		  end
 
 		  def get_auth_token
-		  	params[:auth_token] = request.headers["Auth_token"]
+	  		params[:auth_token] = request.headers["Auth_token"]
 		  end
-		  
+
+		  def skip_trackable
+		    request.env['devise.skip_trackable'] = true
+		  end
+
 		end
 	end
 end

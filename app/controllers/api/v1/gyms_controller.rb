@@ -13,7 +13,6 @@ module Api
 
 			# POST /gyms
 			def create
-				debugger
 				@newGym = Gym.create(name: params[:gym][:name], 
 									 street_address: params[:gym][:street_address],
 									 city: params[:gym][:city],

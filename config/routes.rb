@@ -1,6 +1,6 @@
 TopThis::Application.routes.draw do
   devise_for :users
-  resources :gyms, :routes, :route_completions, :users
+  resources :gyms, :routes, :route_completions, :users, :beta
 
   root to: "gyms#index"
 
@@ -9,7 +9,7 @@ TopThis::Application.routes.draw do
     # /api/v1/... Api::V1::
     namespace :v1 do
       devise_for :users
-      resources :gyms, :routes, :route_completions, :users
+      resources :gyms, :routes, :route_completions, :users, :beta
     end
   end
 end

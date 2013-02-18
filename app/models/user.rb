@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   #before_save :ensure_authentication_token
+  has_attached_file :profile_pic, styles: { small: "100x100>" },
+                    url: "/assets/users/:id/:style/:basename.:extension",
+                    path: ":rails_root/public/assets/users/:id/:style/:basename.:extension"
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -9,12 +12,16 @@ class User < ActiveRecord::Base
          :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_pic
   # attr_accessible :title, :body
 
   has_many :route_completions
 
   def as_json(options={})
-  	super(only: [:id, :email, :first_name, :last_name, :admin_to])
+  	super(only: [:id, :email, :first_name, :last_name, :admin_to], methods: [:profile_pic_url])
+  end
+
+  def profile_pic_url
+    profile_pic.url(:small)
   end
 end

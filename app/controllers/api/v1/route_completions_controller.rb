@@ -21,6 +21,7 @@ module Api
 			def create
 				@new_completion = RouteCompletion.new
 				@new_completion.completion_type = params[:route_completion][:completion_type]
+				@new_completion.climb_type = params[:route_completion][:climb_type]
 				@new_completion.user_id = params[:route_completion][:user_id].to_i
 				@new_completion.route_id = params[:route_completion][:route_id].to_i
 				@new_completion.completion_date = Date.today.to_s

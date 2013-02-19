@@ -6,8 +6,10 @@ class Route < ActiveRecord::Base
   has_many :route_completions, dependent: :destroy
   has_many :betas, dependent: :destroy
 
+  belongs_to :gym
+
   def as_json(options={})
-  	super(only: [:id, :gym_id, :name, :rating, :set_date, :retirement_date],
+  	super(only: [:id, :gym_id, :name, :rating, :set_date, :retirement_date, :location, :setter],
   		  include: {:route_completions => {only: [:id, :climb_type, :completions_date, :completion_type]}})
   end
 

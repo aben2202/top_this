@@ -5,6 +5,8 @@ class Gym < ActiveRecord::Base
   validates_numericality_of :zip,   greater_than_or_equal_to: 10000,
   									less_than_or_equal_to: 99999
 
+  has_many :routes, dependent: :destroy
+
   def as_json(options={})
   	super(only: [:id, :name, :street_address, :city, :state, :zip])
   end

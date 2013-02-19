@@ -7,7 +7,11 @@ module Api
 			# GET /routes
 			def index
 				if params[:gym_id] 
-					conditions = ["routes.gym_id=(?)", params[:gym_id]]
+					if not params[:include_retired]
+						conditions = ["routes.gym_id=(?) AND routes.retirement_date is NULL", params[:gym_id]]
+					else
+						conditions = ["routes.gym_id=(?)", params[:gym_id]]	
+					end					
 					order = ["routes.rating"]
 					@routes = Route.all(conditions: conditions, order: order)
 				else

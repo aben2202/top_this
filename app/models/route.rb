@@ -3,7 +3,8 @@ class Route < ActiveRecord::Base
 
   validates_presence_of :name, :rating, :set_date
 
-  has_many :route_completions
+  has_many :route_completions, dependent: :destroy
+  has_many :betas, dependent: :destroy
 
   def as_json(options={})
   	super(only: [:id, :gym_id, :name, :rating, :set_date, :retirement_date],

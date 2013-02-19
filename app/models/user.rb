@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :profile_pic
   # attr_accessible :title, :body
 
-  has_many :route_completions
+  has_many :route_completions, dependent: :destroy
+  has_many :betas, dependent: :destroy
 
   def as_json(options={})
   	super(only: [:id, :email, :first_name, :last_name, :admin_to], methods: [:profile_pic_url])

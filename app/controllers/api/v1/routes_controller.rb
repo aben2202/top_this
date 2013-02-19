@@ -1,6 +1,7 @@
 module Api
 	module V1
 		class RoutesController < ActionController::Base
+			prepend_before_filter :get_auth_token
 			before_filter :authenticate_user!, except: [:index, :show]
 			respond_to :json
 
@@ -44,6 +45,15 @@ module Api
 			def destroy
 				respond_with Route.destroy(params[:id])
 			end
+
+			protected
+			def get_auth_token
+	  			params[:auth_token] = request.headers["Auth_token"]
+		  	end
+
+		  	def skip_trackable
+		      request.env['devise.skip_trackable'] = true
+		    end
 		end
 	end
 end

@@ -1,6 +1,8 @@
 module Api
 	module V1
 		class BetaController < ActionController::Base
+			prepend_before_filter :get_auth_token, :skip_trackable
+			before_filter :authenticate_user!, except: [:index, :show]
 			respond_to :json
 
 			# GET /beta
@@ -46,6 +48,15 @@ module Api
 			def destroy
 				respond_with Beta.destroy(params[:id])
 			end
+
+			protected
+			def get_auth_token
+	  			params[:auth_token] = request.headers["Auth_token"]
+		  	end
+
+		  	def skip_trackable
+		      request.env['devise.skip_trackable'] = true
+		    end
 		end
 	end
 end

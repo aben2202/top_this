@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218200135) do
+ActiveRecord::Schema.define(:version => 20130219180355) do
 
   create_table "beta", :force => true do |t|
     t.integer  "route_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130218200135) do
     t.integer  "gym_id"
     t.string   "location"
     t.string   "setter"
+    t.string   "route_type"
   end
 
   create_table "users", :force => true do |t|

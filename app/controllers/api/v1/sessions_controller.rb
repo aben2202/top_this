@@ -1,8 +1,7 @@
 module Api
 	module V1
 		class SessionsController < ActionController::Base
-		  prepend_before_filter :get_auth_token
-		  prepend_before_filter :skip_trackable
+		  prepend_before_filter :get_auth_token, :skip_trackable
 		  before_filter :authenticate_user!, only: [:destroy]
 		  before_filter :ensure_params_exist, only: [:create]
 		 

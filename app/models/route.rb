@@ -1,5 +1,5 @@
 class Route < ActiveRecord::Base
-  attr_accessible :name, :rating, :retirement_date, :set_date, :gym_id, :location, :setter
+  attr_accessible :name, :rating, :retirement_date, :set_date, :gym_id, :location, :setter, :route_type
 
   validates_presence_of :name, :rating, :set_date
 
@@ -9,7 +9,7 @@ class Route < ActiveRecord::Base
   belongs_to :gym
 
   def as_json(options={})
-  	super(only: [:id, :gym_id, :name, :rating, :set_date, :retirement_date, :location, :setter],
+  	super(only: [:id, :gym_id, :name, :rating, :set_date, :retirement_date, :location, :setter, :route_type],
   		  include: {:route_completions => {only: [:id, :climb_type, :completions_date, :completion_type]}})
   end
 

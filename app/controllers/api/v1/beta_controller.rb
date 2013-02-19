@@ -21,9 +21,11 @@ module Api
 
 			# POST /beta
 			def create
+				debugger
 				@new_beta = Beta.new
 				@new_beta.user_id = params[:beta][:user_id].to_i
 				@new_beta.route_id = params[:beta][:route_id].to_i
+				@new_beta.comment = params[:beta][:comment]
 				@new_beta.date = Date.today.to_s
 				@new_beta.save
 

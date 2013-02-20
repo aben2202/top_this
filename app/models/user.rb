@@ -23,6 +23,6 @@ class User < ActiveRecord::Base
   end
 
   def profile_pic_url
-    profile_pic.url(:small)
+    profile_pic.url
   end
 end

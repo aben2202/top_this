@@ -4,10 +4,10 @@ class Beta < ActiveRecord::Base
   belongs_to :route
   belongs_to :user 
 
-  validates_presence_of :comment, :route_id, :user_id, :date
+  validates_presence_of :comment, :route_id, :user_id
 
   def as_json(options={})
-  	super(only: [:id, :comment, :date],
+  	super(only: [:id, :comment, :created_at],
   		  include: {user: {only: [:id, :email, :first_name, :last_name, :admin_to], methods: [:profile_pic_url]},
   		  			route: {only: [:id, :gym_id, :name, :rating, :set_date, :retirement_date]}})
   end

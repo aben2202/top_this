@@ -9,11 +9,11 @@ module Api
 			def index
 				if params[:route_id]
 					conditions = "beta.route_id=(?)", params[:route_id]
-					order = "beta.date DESC"
+					order = "beta.created_at DESC"
 					@beta = Beta.where(conditions).order(order)
 				elsif params[:user_id]
 					conditions = "beta.user_id=(?)", params[:user_id]
-					order = "beta.date DESC"
+					order = "beta.created_at DESC"
 					@beta = Beta.where(conditions).order(order)
 				else
 					@beta = Beta.all
@@ -23,12 +23,10 @@ module Api
 
 			# POST /beta
 			def create
-				debugger
 				@new_beta = Beta.new
 				@new_beta.user_id = params[:beta][:user_id].to_i
 				@new_beta.route_id = params[:beta][:route_id].to_i
 				@new_beta.comment = params[:beta][:comment]
-				@new_beta.date = Date.today.to_s
 				@new_beta.save
 
 				render json: @new_beta

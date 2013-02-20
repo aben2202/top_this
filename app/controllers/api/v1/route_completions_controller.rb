@@ -37,7 +37,8 @@ module Api
 
 			# PUT /route_completions/1
 			def update
-				respond_with RouteCompletion.update(params[:id], params[:route_completion])
+				@completion = RouteCompletion.update(params[:id], params[:route_completion])
+				render json: @completion
 			end
 
 			# DELETE /route_completions/1

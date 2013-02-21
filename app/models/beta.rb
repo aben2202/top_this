@@ -9,7 +9,7 @@ class Beta < ActiveRecord::Base
   def as_json(options={})
   	super(only: [:id, :comment, :created_at],
   		  include: {user: {only: [:id, :email, :first_name, :last_name, :admin_to], methods: [:profile_pic_url]},
-  		  			route: {only: [:id, :gym_id, :name, :rating, :set_date, :retirement_date]}})
+  		  			route: {only: [:id, :gym_id, :name, :rating, :created_at, :set_date, :retirement_date, :location, :setter, :route_type]}})
   end
 
   private

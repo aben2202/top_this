@@ -9,7 +9,7 @@ class Route < ActiveRecord::Base
   belongs_to :gym
 
   def as_json(options={})
-  	super(only: [:id, :gym_id, :name, :rating, :set_date, :retirement_date, :location, :setter, :route_type],
+  	super(only: [:id, :gym_id, :name, :rating, :created_at, :set_date, :retirement_date, :location, :setter, :route_type],
   		  include: {:route_completions => {only: [:id, :climb_type, :completions_date, :completion_type]}})
   end
 

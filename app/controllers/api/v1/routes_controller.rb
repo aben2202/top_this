@@ -46,7 +46,10 @@ module Api
 			# DELETE /routes/1
 			def destroy
 				@route = Route.find(params[:id])
+				@route_copy = Route.new
+				@route_copy.name = @route.name
 				@route.destroy
+				render json: @route_copy
 			end
 
 			protected

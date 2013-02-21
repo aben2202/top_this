@@ -1,7 +1,7 @@
 module Api
 	module V1
 		class RoutesController < ActionController::Base
-			prepend_before_filter :get_auth_token
+			prepend_before_filter :get_auth_token, :skip_trackable
 			before_filter :authenticate_user!, except: [:index, :show]
 			respond_to :json
 
@@ -33,7 +33,8 @@ module Api
 
 			# GET /routes/1
 			def show
-				respond_with Route.find(params[:id])
+				@route = Route.find(params[:id])
+				render json: @route
 			end
 
 			# PUT /routes/1

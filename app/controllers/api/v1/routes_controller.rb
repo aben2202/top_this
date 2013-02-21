@@ -38,7 +38,8 @@ module Api
 
 			# PUT /routes/1
 			def update
-				respond_with Route.update(params[:id], params[:route])
+				@route = Route.update(params[:id], params[:route])
+				render json: @route
 			end
 
 			# DELETE /routes/1

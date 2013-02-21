@@ -45,7 +45,8 @@ module Api
 
 			# DELETE /routes/1
 			def destroy
-				respond_with Route.destroy(params[:id])
+				@route = Route.find(params[:id])
+				@route.destroy
 			end
 
 			protected

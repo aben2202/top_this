@@ -27,6 +27,7 @@ module Api
 				@new_beta.user_id = params[:beta][:user_id].to_i
 				@new_beta.route_id = params[:beta][:route_id].to_i
 				@new_beta.comment = params[:beta][:comment]
+				@new_beta.beta_type = params[:beta][:beta_type]
 				@new_beta.save
 
 				render json: @new_beta
@@ -39,7 +40,9 @@ module Api
 
 			# PUT /beta/1
 			def update
-				respond_with Beta.update(params[:id], params[:beta])
+				@betaToUpdate = Beta.update(params[:id], params[:beta])
+
+				render json: @betaToUpdate
 			end
 
 			# DELETE /beta/1

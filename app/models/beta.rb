@@ -4,7 +4,7 @@ class Beta < ActiveRecord::Base
   belongs_to :route
   belongs_to :user 
 
-  validates_presence_of :comment, :route_id, :user_id, :beta_type, :beta_answered
+  validates_presence_of :comment, :route_id, :user_id, :beta_type
 
   def as_json(options={})
   	super(only: [:id, :comment, :beta_type, :beta_answered, :created_at],

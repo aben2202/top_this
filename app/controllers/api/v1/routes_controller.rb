@@ -24,7 +24,6 @@ module Api
 			# POST /routes
 			def create
 				@newRoute = Route.create(params[:route])
-				@newRoute.set_date = Date.today.to_s
 				@newRoute.rating = @newRoute.rating.upcase
 				@newRoute.save
 

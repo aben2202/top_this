@@ -16,7 +16,7 @@ module Api
 					order = "beta.created_at DESC"
 					@beta = Beta.where(conditions).order(order)
 				elsif params[:only_pending_beta_requests]
-					conditions = "beta.beta_type = 'beta request' AND beta.beta_answered is NULL"
+					conditions = "beta.beta_type = 'beta request' AND beta.beta_answered = false"
 					order = "beta.created_at DESC"
 					@beta = Beta.where(conditions).order(order)
 				else

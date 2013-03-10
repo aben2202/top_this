@@ -7,10 +7,12 @@ module Api
 
 			# GET /users
 			def index
-				if params[:auth_token] 
+				if params[:all]
+					@users = User.find(:all, order: "users.created_at DESC")
+				elsif params[:auth_token] 
 					@users = User.find_by_authentication_token(params[:auth_token])
 				else
-					@users = User.all
+					@users = User.find(:all, order: "users.created_at DESC")
 				end
 				render json: @users
 			end

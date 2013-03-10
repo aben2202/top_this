@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :betas, dependent: :destroy
 
   def as_json(options={})
-  	super(only: [:id, :email, :first_name, :last_name, :admin_to], methods: [:profile_pic_url])
+  	super(only: [:id, :email, :first_name, :last_name, :admin_to, :created_at], methods: [:profile_pic_url])
   end
 
   def profile_pic_url

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   #before_save :ensure_authentication_token
-  has_attached_file :profile_pic, styles: { small: "100x100>" },
-                    url: "/assets/users/:id/:style/:basename.:extension",
-                    path: ":rails_root/public/assets/users/:id/:style/:basename.:extension"
+  has_attached_file :profile_pic, styles: { small: "100x100>" } #,
+                     # url: "/assets/users/:id/:style/:basename.:extension",
+                     # path: ":rails_root/public/assets/users/:id/:style/:basename.:extension"
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

@@ -61,6 +61,7 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     hike (1.2.1)
+    hirb (0.7.1)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.2.0)
@@ -151,6 +152,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   debugger
   devise
+  hirb
   jquery-rails
   paperclip
   pg (= 0.12.2)

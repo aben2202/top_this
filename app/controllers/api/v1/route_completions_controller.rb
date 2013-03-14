@@ -25,6 +25,9 @@ module Api
 				@new_completion.user_id = params[:route_completion][:user_id].to_i
 				@new_completion.route_id = params[:route_completion][:route_id].to_i
 				@new_completion.completion_date = Date.today.to_s
+				if params[:route_completion][:send_date]
+					@new_completion.send_date = params[:route_completion][:send_date]
+				end
 				@new_completion.save
 
 				render json: @new_completion
@@ -38,6 +41,9 @@ module Api
 			# PUT /route_completions/1
 			def update
 				@completion = RouteCompletion.update(params[:id], params[:route_completion])
+				if not params[:route_completion][:send_date]
+					@completion.update_attributes(send_date: nil)
+				end
 				render json: @completion
 			end
 

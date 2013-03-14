@@ -1,5 +1,5 @@
 class RouteCompletion < ActiveRecord::Base
-  attr_accessible :climb_type, :completion_date, :completion_type, :user_id, :route_id
+  attr_accessible :climb_type, :completion_date, :completion_type, :user_id, :route_id, :send_date
 
   belongs_to :route
   belongs_to :user
@@ -7,7 +7,7 @@ class RouteCompletion < ActiveRecord::Base
   validates_uniqueness_of :user_id, scope: [:climb_type, :route_id]
 
   def as_json(options={})
-  	super(only: [:id, :climb_type, :completion_date, :completion_type],
+  	super(only: [:id, :climb_type, :completion_date, :completion_type, :send_date],
   		  include: {:route => {only: [:id, :gym_id, :name, :rating, :created_at, :retirement_date, :location, :setter, :route_type]},
   		  		    :user => {only: [:id, :email, :first_name, :last_name], methods: [:profile_pic_url]}})
   end

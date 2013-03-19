@@ -11,6 +11,10 @@ module Api
 					conditions = "route_completions.user_id=(?)", params[:user_id]
 					order = "route_completions.completion_date DESC"
 					@route_completions = RouteCompletion.where(conditions).order(order)
+				elsif params[:gym_id]
+					conditions = "route_completions.gym_id=(?)", params[:gym_id]
+					order = "route_completions.completion_date DESC"
+					@route_completions = RouteCompletion.where(conditions).order(order)
 				else
 					@route_completions = RouteCompletion.all
 				end

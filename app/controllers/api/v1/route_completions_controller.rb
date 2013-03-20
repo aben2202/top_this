@@ -12,9 +12,13 @@ module Api
 					order = "route_completions.completion_date DESC"
 					@route_completions = RouteCompletion.where(conditions).order(order)
 				elsif params[:gym_id]
-					conditions = "route_completions.gym_id=(?)", params[:gym_id]
+					joins = "join routes on routes.id = route_completions.route_id"
+					conditions = "routes.gym_id=(?)", params[:gym_id]
 					order = "route_completions.completion_date DESC"
-					@route_completions = RouteCompletion.where(conditions).order(order)
+					@route_completions = RouteCompletion.find(:all,
+															  joins: joins,
+															  conditions: conditions,
+															  order: order)
 				else
 					@route_completions = RouteCompletion.all
 				end

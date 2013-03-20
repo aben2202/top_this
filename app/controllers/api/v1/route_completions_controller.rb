@@ -15,10 +15,17 @@ module Api
 					joins = "join routes on routes.id = route_completions.route_id"
 					conditions = "routes.gym_id=(?)", params[:gym_id]
 					order = "route_completions.completion_date DESC"
-					@route_completions = RouteCompletion.find(:all,
-															  joins: joins,
-															  conditions: conditions,
-															  order: order)
+					if params[:page]
+						@route_completions = RouteCompletion.paginate(per_page: 20, page: params[:page]).find(:all,
+																  joins: joins,
+															 	  conditions: conditions,
+															   	  order: order)
+					else
+						@route_completions = RouteCompletion.find(:all,
+																  joins: joins,
+															 	  conditions: conditions,
+															   	  order: order)
+					end
 				else
 					@route_completions = RouteCompletion.all
 				end

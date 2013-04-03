@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314160842) do
+ActiveRecord::Schema.define(:version => 20130403164354) do
 
   create_table "beta", :force => true do |t|
     t.integer  "route_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130314160842) do
   end
 
   create_table "route_completions", :force => true do |t|
-    t.date     "completion_date"
+    t.datetime "completion_date"
     t.string   "completion_type"
     t.string   "climb_type"
     t.datetime "created_at",      :null => false

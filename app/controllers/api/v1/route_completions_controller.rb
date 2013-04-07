@@ -9,12 +9,12 @@ module Api
 					@route_completions = RouteCompletion.where route_id: params[:route_id]
 				elsif params[:user_id]
 					conditions = "route_completions.user_id=(?)", params[:user_id]
-					order = "route_completions.created_at DESC"
+					order = "route_completions.updated_at DESC"
 					@route_completions = RouteCompletion.where(conditions).order(order)
 				elsif params[:gym_id]
 					joins = "join routes on routes.id = route_completions.route_id"
 					conditions = "routes.gym_id=(?)", params[:gym_id]
-					order = "route_completions.created_at DESC"
+					order = "route_completions.updated_at DESC"
 					if params[:page]
 						@route_completions = RouteCompletion.paginate(per_page: 20, page: params[:page]).find(:all,
 																  joins: joins,

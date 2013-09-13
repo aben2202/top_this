@@ -1,0 +1,16 @@
+Tue, 16 Apr 2013 11:45:28 -0500
+doc/README_FOR_APP	Sun, 20 Jan 2013 21:39:41 -0600
+app/controllers/api/v1/beta_controller.rb	Sat, 23 Feb 2013 14:20:39 -0600
+app/controllers/api/v1/gyms_controller.rb	Mon, 18 Feb 2013 12:43:31 -0600
+app/controllers/api/v1/registrations_controller.rb	Thu, 07 Feb 2013 21:15:00 -0600
+app/controllers/api/v1/route_completions_controller.rb	Sun, 07 Apr 2013 11:18:49 -0500
+app/controllers/api/v1/routes_controller.rb	Thu, 21 Feb 2013 19:58:17 -0600
+app/controllers/api/v1/sessions_controller.rb	Tue, 12 Mar 2013 01:54:42 -0500
+app/controllers/api/v1/users_controller.rb	Mon, 11 Mar 2013 11:29:13 -0500
+app/controllers/application_controller.rb	Sun, 20 Jan 2013 21:39:41 -0600
+app/helpers/application_helper.rb	Sat, 16 Feb 2013 03:43:55 -0600
+app/models/beta.rb	Fri, 22 Feb 2013 14:05:30 -0600
+app/models/gym.rb	Tue, 19 Feb 2013 09:44:46 -0600
+app/models/route.rb	Sun, 07 Apr 2013 11:17:22 -0500
+app/models/route_completion.rb	Sun, 07 Apr 2013 11:16:38 -0500
+app/models/user.rb	Mon, 11 Mar 2013 00:07:08 -0500

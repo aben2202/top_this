@@ -38,6 +38,7 @@ module Api
 
 			# PUT /routes/1
 			def update
+				debugger
 				@route = Route.update(params[:id], params[:route])
 				render json: @route
 			end

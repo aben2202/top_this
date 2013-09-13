@@ -31,6 +31,7 @@ module Api
 
 			# PUT /users/1
 			def update
+				debugger
 				@user = User.update(params[:id], params[:user])
 				render json: @user
 			end

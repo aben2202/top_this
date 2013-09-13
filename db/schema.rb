@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130403164354) do
+ActiveRecord::Schema.define(:version => 20130913114040) do
 
   create_table "beta", :force => true do |t|
     t.integer  "route_id"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20130403164354) do
     t.string   "comment"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
-    t.string   "beta_type"
+    t.text     "beta_type"
     t.boolean  "beta_answered", :default => false
   end
 
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130403164354) do
   end
 
   create_table "route_completions", :force => true do |t|
-    t.datetime "completion_date"
+    t.date     "completion_date"
     t.string   "completion_type"
     t.string   "climb_type"
     t.datetime "created_at",      :null => false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130403164354) do
     t.string   "location"
     t.string   "setter"
     t.string   "route_type"
+    t.datetime "set_date"
   end
 
   create_table "users", :force => true do |t|
